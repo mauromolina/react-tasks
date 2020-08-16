@@ -13,7 +13,7 @@ const ProjectList = ({}) => {
         getProjects();
     }, []);
     
-    if(projects.length === 0) return null;
+    if(projects.length === 0) return <p className="centrar">No hay proyectos</p>;
 
     
 

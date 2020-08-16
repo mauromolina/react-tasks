@@ -133,6 +133,10 @@ aside  {
   line-height: 1.5;
   font-weight: 300;
 }
+
+.listado-proyectos button {
+  margin: 0 auto;
+}
 .app-header {
   display: flex;
   justify-content: space-between;
@@ -356,4 +360,12 @@ aside  {
 .alerta-error {
   background-color: rgb(230, 78, 78);
   color: var(--blanco);
+}
+
+.centrar {
+  text-align: center;
+}
+
+.bg-red {
+  background-color: red;
 }

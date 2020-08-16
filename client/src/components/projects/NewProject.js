@@ -5,14 +5,12 @@ const NewProject = () => {
 
     // obtener el state del form
     const projectsContext = useContext(projectContext);
-    const { form, showForm } = projectsContext;
+    const { form, toggleForm, error, newProject, showErrorForm } = projectsContext;
 
     // State del nuevo proyecto
     const [project, setProject] = useState({
         name: ''
     });
-
-    const [error, setError] = useState(false);
 
     const { name } = project;
 
@@ -26,18 +24,16 @@ const NewProject = () => {
     const handleSubmit = e => {
         e.preventDefault();
         // validar
-        if(name.trim() === ''){
-            setError(true);
+        if(name === ''){
+            showErrorForm();
             return;
         }
-        setError(false);
         // guardo en el state
-        setProject(name);
+        newProject(project);
         // reinicio el form
         setProject({
             name:''
         })
-
     }
 
     return ( 
@@ -45,7 +41,7 @@ const NewProject = () => {
             <button
                 type="button"
                 className="btn btn-block btn-primario"
-                onClick={ () => showForm()}
+                onClick={ () => toggleForm(true)}
             >
                 Nuevo Proyecto
             </button>
@@ -67,9 +63,16 @@ const NewProject = () => {
                     className="btn btn-primario btn-block"
                     value="Agregar"
                 />
+                <input
+                    type="button"
+                    className="btn btn-primario btn-block"
+                    value="Cancelar"
+                    onClick={() => toggleForm(false)}
+                />
             </form>
             
             : null}
+            { error ? <p className="mensaje error">El nombre del proyecto es obligatorio</p> :null}
         </Fragment>
      );
 }
