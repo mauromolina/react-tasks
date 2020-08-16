@@ -1,6 +1,11 @@
-import React, {Fragment, useState} from 'react';
+import React, {Fragment, useState, useContext} from 'react';
+import projectContext from '../../context/projects/projectContext';
 
 const NewProject = () => {
+
+    // obtener el state del form
+    const projectsContext = useContext(projectContext);
+    const { form } = projectsContext;
 
     // State del nuevo proyecto
     const [project, setProject] = useState({
@@ -43,7 +48,8 @@ const NewProject = () => {
             >
                 Nuevo Proyecto
             </button>
-            <form
+            { form ? 
+                <form
                 className="formulario-nuevo-proyecto"
                 onSubmit={handleSubmit}
             >
@@ -61,6 +67,8 @@ const NewProject = () => {
                     value="Agregar"
                 />
             </form>
+            
+            : null}
         </Fragment>
      );
 }
