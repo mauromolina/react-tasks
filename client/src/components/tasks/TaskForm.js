@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import projectContext from '../../context/projects/projectContext';
 import taskContext from '../../context/tasks/taskContext';
 
@@ -8,8 +8,18 @@ const TaskForm = () => {
     const { actualProject } = projectsContext;
 
     const tasksContext = useContext(taskContext);
-    const { newTask, taskError, validateTask, getProjectTasks } = tasksContext;
+    const { actualTask, taskError, newTask,  validateTask, getProjectTasks, updateTask } = tasksContext;
 
+    useEffect( () => {
+        if(actualTask !== null){
+            setTask(actualTask);
+        } else {
+            setTask({
+                name: ''
+            })
+        }
+    }, [actualTask])
+    
     // State del form
     const [task, setTask] = useState({
         name: ''
@@ -34,9 +44,16 @@ const TaskForm = () => {
             validateTask();
             return;
         }
-        task.projectId = actProject.id;
-        task.status = false;
-        newTask(task);
+
+        // Si es edicion o esta agregando
+        if (actualTask === null) {
+            task.projectId = actProject.id;
+            task.status = false;
+            newTask(task);
+        } else {
+            updateTask(task);
+        }
+        
         getProjectTasks(actProject.id);
         setTask({
             name: ''
@@ -63,7 +80,7 @@ const TaskForm = () => {
                     <input
                         type="submit"
                         className="btn btn-primario btn-block"
-                        value="Agregar tarea"
+                        value={ actualTask ? 'Editar Tarea' : 'Agregar tarea'}
                     />
                 </div>
             </form>
