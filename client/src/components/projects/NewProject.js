@@ -28,6 +28,7 @@ const NewProject = () => {
             showErrorForm();
             return;
         }
+        
         // guardo en el state
         newProject(project);
         // reinicio el form
