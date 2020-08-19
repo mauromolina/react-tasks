@@ -12,3 +12,6 @@ export const DELETE_TASK = 'DELETE_TASK';
 export const TASK_STATUS = 'TASK_STATUS';
 export const ACTUAL_TASK = 'ACTUAL_TASK';
 export const UPDATE_TASK = 'UPDATE_TASK';
+
+export const SHOW_ALERT = 'SHOW_ALERT'
+export const HIDE_ALERT = 'HIDE_ALERT'
