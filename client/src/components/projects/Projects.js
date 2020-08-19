@@ -1,10 +1,14 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import Sidebar from '../layout/Sidebar';
 import Navbar from '../layout/Navbar';
 import TaskForm from '../tasks/TaskForm';
 import TaskList from '../tasks/TaskList';
+import AuthContext from '../../context/auth/authContext';
  
 const Projects = () => {
+
+    const authContext = useContext(AuthContext);
+    const { getAuthUser } = authContext;
 
     const [size, setSize] = useState({
         'windowWidth': 0,
@@ -12,6 +16,7 @@ const Projects = () => {
     })
 
      useEffect( () => {
+         getAuthUser();
          let windowWidth = typeof window !== "undefined" ? window.innerWidth : 0;
          let windowHeight = typeof window !== "undefined" ? window.innerHeight : 0;
 

@@ -87,6 +87,9 @@ a {
   display: block;
   background-color: transparent;
 }
+.log-out{
+  color: white;
+}
 
 @media (min-width: 768px) {
   .contenedor-app {

@@ -1,11 +1,24 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import AlertContext from '../../context/alerts/alertContext';
+import AuthContext from '../../context/auth/authContext';
 
-const NewAccount = () => {
+const NewAccount = (props) => {
 
     const alertContext = useContext(AlertContext);
     const { alert, showAlert } = alertContext;
+
+    const authContext = useContext(AuthContext);
+    const { msg, auth, signInUser } = authContext;
+
+    useEffect( () => {
+        if(auth){
+            props.history.push('/projects');
+        }
+        if(msg){
+            showAlert(msg.msg, msg.category);
+        }
+    },[msg, auth, props.history])
 
     // State para iniciar sesion
     const [user, setUser] = useState({
@@ -46,6 +59,11 @@ const NewAccount = () => {
             return;
         }
         // pasar al action
+        signInUser({
+            name,
+            email,
+            password
+        });
     }
     return ( 
         <div className="form-usuario">
