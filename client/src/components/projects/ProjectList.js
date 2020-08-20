@@ -4,7 +4,7 @@ import projectContext from '../../context/projects/projectContext';
 import AlertContext from '../../context/alerts/alertContext';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-const ProjectList = ({}) => {
+const ProjectList = () => {
 
     // obtener los proyectos del state inicial con context
     const projectsContext = useContext(projectContext);

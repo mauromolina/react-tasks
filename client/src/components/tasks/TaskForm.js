@@ -5,7 +5,7 @@ import taskContext from '../../context/tasks/taskContext';
 const TaskForm = () => {
 
     const projectsContext = useContext(projectContext);
-    const { actualProject, getActualProject } = projectsContext;
+    const { actualProject } = projectsContext;
 
     const tasksContext = useContext(taskContext);
     const { actualTask, taskError, newTask,  validateTask, getProjectTasks, updateTask } = tasksContext;

@@ -5,7 +5,6 @@ import { PROJECT_TASKS,
          NEW_TASK, 
          VALIDATE_TASK, 
          DELETE_TASK,
-         TASK_STATUS,
          ACTUAL_TASK,
          UPDATE_TASK
         } from '../../types';

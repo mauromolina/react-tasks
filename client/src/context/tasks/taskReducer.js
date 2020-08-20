@@ -1,4 +1,4 @@
-import { PROJECT_TASKS, NEW_TASK, VALIDATE_TASK, DELETE_TASK, TASK_STATUS, ACTUAL_TASK, UPDATE_TASK } from '../../types';
+import { PROJECT_TASKS, NEW_TASK, VALIDATE_TASK, DELETE_TASK, ACTUAL_TASK, UPDATE_TASK } from '../../types';
 
 export default (state, action) => {
     switch(action.type) {
