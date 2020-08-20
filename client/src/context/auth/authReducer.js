@@ -16,7 +16,8 @@ export default (state, action) => {
             return {
                 ...state,
                 auth: true,
-                msg: null    
+                msg: null,
+                loading: false   
             }
 
         case LOG_OUT:
@@ -35,7 +36,8 @@ export default (state, action) => {
             return {
                 ...state,
                 auth: true,
-                user: action.payload
+                user: action.payload,
+                loading: false
             }
 
         default:

@@ -19,7 +19,8 @@ import {
         token: localStorage.getItem('token'),
         auth: null,
         user: null,
-        msg: null
+        msg: null,
+        loading: true
     }
 
     const [state, dispatch] = useReducer(authReducer, initialState);
@@ -99,6 +100,7 @@ import {
                 auth: state.auth,
                 user: state.user,
                 msg: state.msg,
+                loading: state.loading,
                 signInUser,
                 logIn,
                 getAuthUser,
