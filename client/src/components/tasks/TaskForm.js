@@ -5,7 +5,7 @@ import taskContext from '../../context/tasks/taskContext';
 const TaskForm = () => {
 
     const projectsContext = useContext(projectContext);
-    const { actualProject } = projectsContext;
+    const { actualProject, getActualProject } = projectsContext;
 
     const tasksContext = useContext(taskContext);
     const { actualTask, taskError, newTask,  validateTask, getProjectTasks, updateTask } = tasksContext;
@@ -47,17 +47,17 @@ const TaskForm = () => {
 
         // Si es edicion o esta agregando
         if (actualTask === null) {
-            task.projectId = actProject.id;
-            task.status = false;
+            task.project = actProject._id;
             newTask(task);
         } else {
             updateTask(task);
         }
         
-        getProjectTasks(actProject.id);
+        getProjectTasks(actProject._id);
         setTask({
             name: ''
         })
+        
 
     }
 

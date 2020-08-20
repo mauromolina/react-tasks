@@ -8,12 +8,12 @@ const Task = ({task}) => {
     const { actualProject } = projectsContext;
 
     const tasksContext = useContext(taskContext);
-    const { deleteTask, getProjectTasks, changeTaskStatus, getActualTask } = tasksContext;
+    const { deleteTask, getProjectTasks, updateTask, getActualTask } = tasksContext;
 
     const [actProject] = actualProject;
 
     const handleClick = (id) => {
-        deleteTask(id);
+        deleteTask(id, actProject._id);
         getProjectTasks(actProject.id);
     }
 
@@ -23,7 +23,9 @@ const Task = ({task}) => {
         } else {
             task.status = true;
         }
-        changeTaskStatus(task)
+        console.log('Task:');
+        console.log(task);
+        updateTask(task)
     }
 
     const getTask = task => {
@@ -57,7 +59,7 @@ const Task = ({task}) => {
                 <button
                     type="button"
                     className="btn btn-secundario"
-                    onClick={() => handleClick(task.id)}
+                    onClick={() => handleClick(task._id)}
                 >
                     Eliminar
                 </button>

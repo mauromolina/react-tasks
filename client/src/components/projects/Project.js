@@ -19,7 +19,7 @@ const Project = ({project}) => {
         <button
             type="button"
             className="btn btn-blank"
-            onClick={() => getProject(project.id)}
+            onClick={() => getProject(project._id)}
         >
             <p className="centrar">{project.name}</p>
         </button>
